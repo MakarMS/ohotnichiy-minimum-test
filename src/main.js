@@ -1,10 +1,34 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
-import {router} from "./router.js";
+import './styles/style.scss'
+import { router } from './router.js'
 
-const app = createApp(App)
+import 'vuetify/styles'
+import {createVuetify} from 'vuetify'
+import {aliases, mdi} from 'vuetify/iconsets/mdi-svg'
 
-app.use(router)
+const lightTheme = {
+    dark: false,
+    colors: {
+        background: '#fef8ec',
+    }
+}
 
-app.mount('#app')
+const vuetify = createVuetify({
+    theme: {
+        defaultTheme: 'lightTheme',
+        themes: {lightTheme}
+    },
+    icons: {
+        defaultSet: 'mdi',
+        aliases,
+        sets: {
+            mdi
+        },
+    },
+})
+
+createApp(App)
+    .use(router)
+    .use(vuetify)
+    .mount('#app')
