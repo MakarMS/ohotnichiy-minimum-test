@@ -6,6 +6,7 @@ import {storeToRefs} from 'pinia'
 import TestSettingsSection from '@components/test/sections/TestSettingsSection.vue'
 import TestQuestionSection from '@components/test/sections/TestQuestionSection.vue'
 import TestResultsSection from '@components/test/sections/TestResultsSection.vue'
+import {ymGoal} from "@utils/ym.js";
 
 const props = defineProps({
   modelValue: {type: Boolean, required: true},
@@ -48,15 +49,23 @@ function handleStartTest() {
     return
   }
   mode.value = 'test'
+  ymGoal('click_start_test_button', {page: window.location.pathname})
 }
 
 function handleTryAgain() {
   store.resetToSettings()
   mode.value = 'settings'
+  ymGoal('click_try_again_button', {page: window.location.pathname})
 }
 
 function handleCloseFromResults() {
   dialog.value = false
+  ymGoal('click_close_from_results_button', {page: window.location.pathname})
+}
+
+function handleCloseFromSettings() {
+  dialog.value = false
+  ymGoal('click_close_from_settings_button', {page: window.location.pathname})
 }
 </script>
 
@@ -69,7 +78,7 @@ function handleCloseFromResults() {
     <v-card class="pa-4 d-flex flex-column">
       <TestSettingsSection
           v-if="mode === 'settings'"
-          @close="dialog = false"
+          @close="handleCloseFromSettings"
           @start-test="handleStartTest"
       />
 

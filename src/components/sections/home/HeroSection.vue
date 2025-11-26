@@ -2,8 +2,15 @@
 import {ref} from 'vue'
 import bg from '@images/background.png'
 import TestDialog from '@components/test/TestDialog.vue'
+import {ymGoal} from "@utils/ym.js";
 
 const dialog = ref(false)
+
+function onStartClick() {
+  dialog.value = true
+  ymGoal('click_open_test_button', {page: window.location.pathname})
+}
+
 </script>
 
 <template>
@@ -30,7 +37,7 @@ const dialog = ref(false)
           height="62"
           rounded="lg"
           size="x-large"
-          @click="dialog = true"
+          @click="onStartClick"
       >
         Начать тест
       </v-btn>
