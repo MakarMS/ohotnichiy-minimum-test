@@ -13,12 +13,6 @@ export default defineConfig({
             autoImport: true
         })
     ],
-
-    server: {
-        host: '0.0.0.0',
-        port: 5173, // можешь убрать, если не нужно фиксировать
-    },
-
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
