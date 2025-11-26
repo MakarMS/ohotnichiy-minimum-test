@@ -1,5 +1,5 @@
 <script setup>
-import {computed, nextTick, ref, watch} from 'vue'
+import {computed, ref, watch} from 'vue'
 import {useTestStore} from '@stores/testStore'
 import {storeToRefs} from 'pinia'
 
@@ -44,7 +44,6 @@ watch(
 )
 
 async function handleStartTest() {
-  await nextTick()
   store.initTest()
   if (!totalQuestions.value) {
     return
