@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import './styles/style.scss'
-import { router } from './router.js'
+import {router} from './router.js'
 
 import 'vuetify/styles'
 import {createVuetify} from 'vuetify'
@@ -11,6 +11,7 @@ const lightTheme = {
     dark: false,
     colors: {
         background: '#fef8ec',
+        primary: '#214f23',
     }
 }
 
