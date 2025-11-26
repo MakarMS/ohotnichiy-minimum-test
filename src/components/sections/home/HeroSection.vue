@@ -1,5 +1,9 @@
 <script setup>
+import {ref} from 'vue'
 import bg from '@images/background.png'
+import TestDialog from '@components/test/TestDialog.vue'
+
+const dialog = ref(false)
 </script>
 
 <template>
@@ -26,10 +30,13 @@ import bg from '@images/background.png'
           height="62"
           rounded="lg"
           size="x-large"
+          @click="dialog = true"
       >
         Начать тест
       </v-btn>
     </div>
+
+    <TestDialog v-model="dialog"/>
   </section>
 </template>
 
