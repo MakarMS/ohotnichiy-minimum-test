@@ -84,7 +84,7 @@ function close() {
           v-model="showCorrectAnswer"
           color="primary"
           inset
-          label="Показывать верный ответ и объяснение"
+          label="Показывать верный ответ и объяснение сразу"
       />
     </div>
 
