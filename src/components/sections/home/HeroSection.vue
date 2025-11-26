@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import bg from '@images/background.png'
+import bgLazy from '@images/background.webp'
 import TestDialog from '@components/test/TestDialog.vue'
 import {ymGoal} from "@utils/ym.js";
 
@@ -15,11 +16,15 @@ function onStartClick() {
 
 <template>
   <section class="home-wrapper">
-    <v-parallax
-        :src="bg"
-        class="home-bg"
-        height="100vh"
-    />
+    <v-parallax class="home-bg" height="100vh">
+      <v-img
+          :lazy-src="bgLazy"
+          :src="bg"
+          class="w-100 h-100"
+          cover
+      />
+    </v-parallax>
+
 
     <div class="home-center d-flex flex-column align-center text-center px-4 px-sm-6">
       <h1 class="text-h3 text-sm-h2 text-white font-weight-black mb-4">
