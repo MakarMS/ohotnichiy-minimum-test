@@ -38,8 +38,9 @@ function onAnswerSelect(value) {
   }
 
   const answer = q.answers.find(a => a.id === value)
-  if (answer && answer.correct === false && answer.reason) {
-    showExplanation.value = true
+
+  if (answer && answer.correct === false) {
+    showExplanation.value = !!answer.reason
   } else {
     showExplanation.value = false
   }
@@ -102,12 +103,20 @@ const overlayText = computed(() => {
 })
 
 function answerLabelClasses(answer) {
-  if (selectedAnswerId.value === answer.id) {
-    if (showExplanation.value && showCorrectAnswer.value && answer.correct === false) {
-      return 'text-error font-weight-bold'
-    }
-    return 'text-primary font-weight-bold'
+  const isSelected = selectedAnswerId.value === answer.id
+
+  if (!showCorrectAnswer.value || selectedAnswerId.value == null) {
+    return isSelected ? 'text-primary' : ''
   }
+
+  if (answer.correct) {
+    return 'text-success'
+  }
+
+  if (isSelected && !answer.correct) {
+    return 'text-error'
+  }
+
   return ''
 }
 
